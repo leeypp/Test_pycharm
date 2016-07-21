@@ -1,8 +1,6 @@
 #!/bin/env python
 # -*- coding:utf-8 -*-
 __author__ = 'leeypp'
-#!/bin/env python
-# -*- coding: utf-8 -*-
 import time
 import os
 import MySQLdb
