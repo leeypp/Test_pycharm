@@ -27,4 +27,4 @@ while name != " ":
     sum1 = sum1 + name
     print "最终的结果是：", sum1 * 1.0 / i
     print "this test file"
-    print "sucess"
+    print "nothing"
