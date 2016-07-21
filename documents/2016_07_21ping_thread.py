@@ -47,6 +47,8 @@ class pingThread(Thread):
         str_list = a + b + c + d
         #print str_list
         post_url(str_list)
+        end_Time = int(time.time())  # 记录结束时间
+        print "time(秒)：", end_Time - start_Time, "s"  # 打印并计算用的时间
 
 
 def loss(tag1, tag2, value, ip):
@@ -147,3 +149,4 @@ for line in open(path):  # 打开path文件
     ll = T_thread.append(t)
 for ip in range(len(T_thread)):
     T_thread[ip].start()
+# 多线程ping，将处理结果传到open-falcon的agent
