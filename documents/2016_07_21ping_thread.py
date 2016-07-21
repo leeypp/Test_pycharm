@@ -40,7 +40,7 @@ class pingThread(Thread):
             avg1 = float(val2[1])
             max1 = float(val2[2])
             count_True += 1
-        a = loss(link, self.add, n, self.ip)
+        a = loss(link, self.add, n)
         b = Time1(link, self.add, min1)
         c = Time2(link, self.add, avg1)
         d = Time3(link, self.add, max1)
@@ -51,7 +51,7 @@ class pingThread(Thread):
         print "time(秒)：", end_Time - start_Time, "s"  # 打印并计算用的时间
 
 
-def loss(tag1, tag2, value, ip):
+def loss(tag1, tag2, value):
     step = 60
     metric = 'pkt.loss.percent'
     p = []
