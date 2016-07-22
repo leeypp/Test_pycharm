@@ -6,7 +6,8 @@ import commands
 import socket
 import urllib2
 import json
-#一分钟内文件变化，过滤，再进行处理
+# 一分钟内文件变化，过滤，再进行处理
+
 
 def tvengine():
     n = commands.getoutput(''' cat /data/log/tvengine/tv0.log /data/log/tvengine/tv1.log /data/log/tvengine/tv2.log /data/log/tvengine/tv3.log /data/log/tvengine/tv4.log /data/log/tvengine/tv5.log /data/log/tvengine/tv6.log /data/log/tvengine/tv7.log |grep `date +"%Y-%m-%d"`|grep `date +"%H:%M:"`|grep '3rd'|wc -l ''' ).split('\n')
@@ -46,7 +47,7 @@ def post_url(content):
     request.get_method = lambda: method
     try:
         connection = opener.open(request)
-    except urllib2.HTTPError, e:
+    except urllib2.HTTPError as e:
         connection = e
 
     # check. Substitute with appropriate HTTP code
