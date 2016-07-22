@@ -9,7 +9,7 @@ import json
 from threading import Thread
 path = '/data/work/open-falcon/plugin/ping/config_all'
 start_Time = int(time.time())  # 记录开始时间
-
+# 多线程ping，将结果通过open-falcon agent上传
 
 class pingThread(Thread):
 
@@ -40,12 +40,11 @@ class pingThread(Thread):
             avg1 = float(val2[1])
             max1 = float(val2[2])
             count_True += 1
-        a = loss(link, self.add, n)
-        b = Time1(link, self.add, min1)
-        c = Time2(link, self.add, avg1)
-        d = Time3(link, self.add, max1)
+        a = loss(self.link, self.add, n)
+        b = Time1(self.link, self.add, min1)
+        c = Time2(self.link, self.add, avg1)
+        d = Time3(self.link, self.add, max1)
         str_list = a + b + c + d
-        #print str_list
         post_url(str_list)
         end_Time = int(time.time())  # 记录结束时间
         print "time(秒)：", end_Time - start_Time, "s"  # 打印并计算用的时间
@@ -136,6 +135,12 @@ def post_url(content):
     except urllib2.HTTPError as e:
         connection = e
 
+    # check. Substitute with appropriate HTTP code
+    if connection.code == 200:
+        print connection.read()
+    else:
+        print '{"err":1,"msg":"%s"}' % connection
+
 
 T_thread = []
 for line in open(path):  # 打开path文件
@@ -149,4 +154,3 @@ for line in open(path):  # 打开path文件
     ll = T_thread.append(t)
 for ip in range(len(T_thread)):
     T_thread[ip].start()
-# 多线程ping，将处理结果传到open-falcon的agent
