@@ -21,18 +21,14 @@ class pingThread(Thread):
 
     def run(self):
         count_True, count_False = 0, 0
-        ping = os.popen(
-            "ping -c 5 -i 0.1 -w 1 %s| grep loss|awk '{print $6}'" %
-            (self.ip))
+        ping = os.popen("ping -c 5 -i 0.1 -w 1 %s| grep loss|awk '{print $6}'" % (self.ip))
         m = ping.read()
         n = int(m.replace('%', ''))
         if (n == 100):
             h, min1, avg1, max1 = 0, 0, 0, 0
             count_False += 1
         else:
-            return2 = os.popen(
-                "ping -c 5 -i 0.1 -w 1 %s| grep rtt|awk '{print $4}'" %
-                (self.ip))
+            return2 = os.popen("ping -c 5 -i 0.1 -w 1 %s| grep rtt|awk '{print $4}'" % (self.ip))
             hh = return2.read().replace('/', ' ')
             h = hh.replace('\n', '')
             val2 = h.split()
@@ -48,6 +44,7 @@ class pingThread(Thread):
         post_url(str_list)
         end_Time = int(time.time())  # 记录结束时间
         print "time(秒)：", end_Time - start_Time, "s"  # 打印并计算用的时间
+        print "ping通数：", count_True, "   ping不通的ip数：", count_False  # 结果计数
 
 
 def loss(tag1, tag2, value):
