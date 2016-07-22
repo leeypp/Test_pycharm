@@ -151,3 +151,9 @@ for line in open(path):  # 打开path文件
     ll = T_thread.append(t)
 for ip in range(len(T_thread)):
     T_thread[ip].start()
+'''
+path 文件格式
+haerbin dxin 219.150.32.132
+shenyang dxin 219.148.204.66
+guangzhou dxin 183.59.4.178
+'''
