@@ -147,10 +147,13 @@ for line in open(path):  # 打开path文件
     add = val[0]
     print ip, link, add
     list = [ip, link, add]
-    t = pingThread(list)
-    ll = T_thread.append(t)
-for ip in range(len(T_thread)):
-    T_thread[ip].start()
+    t = pingThread(list)  # 创建线程
+    ll = T_thread.append(t)  # 添加线程到线程列表
+for ip in range(len(T_thread)):  #len(T_thread)--开启的线程数
+    T_thread[ip].start()  # 开启新线程
+T_thread[ip].join()  # 等待所有线程完成
+print "Exiting Main Thread"
+
 '''
 path 文件格式
 haerbin dxin 219.150.32.132
