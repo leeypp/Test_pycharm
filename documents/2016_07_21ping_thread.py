@@ -7,7 +7,7 @@ import os
 import urllib2
 import json
 from threading import Thread
-path = '/data/work/open-falcon/plugin/ping/config_all'
+path = '/data/work/open-falcon/plugin/ping/ip_all'
 start_Time = int(time.time())  # 记录开始时间
 # 多线程ping，将结果通过open-falcon agent上传
 
