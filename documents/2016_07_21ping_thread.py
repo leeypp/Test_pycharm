@@ -29,9 +29,9 @@ class pingThread(Thread):
             count_False += 1
         else:
             return2 = os.popen("ping -c 5 -i 0.1 -w 1 %s| grep rtt|awk '{print $4}'" % (self.ip))
-            hh = return2.read().replace('/', ' ')
-            h = hh.replace('\n', '')
-            val2 = h.split()
+            hh = return2.read().replace('/', ' ').replace('\n', '')
+            #h = hh.replace('\n', '')
+            val2 = hh.split()
             min1 = float(val2[0])
             avg1 = float(val2[1])
             max1 = float(val2[2])
