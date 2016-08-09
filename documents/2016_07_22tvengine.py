@@ -10,7 +10,7 @@ import json
 
 
 def tvengine():
-    n = commands.getoutput(''' cat /data/log/tvengine/tv0.log /data/log/tvengine/tv1.log /data/log/tvengine/tv2.log /data/log/tvengine/tv3.log /data/log/tvengine/tv4.log /data/log/tvengine/tv5.log /data/log/tvengine/tv6.log /data/log/tvengine/tv7.log |grep `date +"%Y-%m-%d"`|grep `date +"%H:%M:"`|grep '3rd'|wc -l ''' ).split('\n')
+    n = commands.getoutput(''' cat /data/log/tvengine/tv0.log /data/log/tvengine/tv1.log /data/log/tvengine/tv2.log /data/log/tvengine/tv3.log /data/log/tvengine/tv4.log /data/log/tvengine/tv5.log /data/log/tvengine/tv6.log /data/log/tvengine/tv7.log |grep `date +"%Y-%m-%d"`|grep `date -d "1 minutes ago" +"%H:%M:"`|grep '3rd'|wc -l ''' ).split('\n')
     print n
     n = n[0]
     n = int(n)
