@@ -41,9 +41,7 @@ class pingThread(Thread):
         print hostname, from1, self.eth0, self.eth1
         if from1 != 'open_falcon':
             return None
-        return1 = os.popen(
-            "nmap -n -p T:1-65535 -sS %s| grep tcp" %
-            (self.eth1))
+        return1 = os.popen("nmap -n -p T:1-65535 -sS %s| grep tcp" % (self.eth1))
         m = return1.readlines()
         for line in m:
             rows = line.strip('\n')
