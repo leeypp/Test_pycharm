@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# 时间同步监控脚本
 
 from subprocess import Popen, PIPE
 import json
