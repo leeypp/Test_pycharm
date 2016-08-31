@@ -12,15 +12,14 @@ import sys
 import commands
 import urllib2
 path = './redis_file'
+redis_cli = '/usr/bin/redis-cli'      # 如果你是自己编译部署到redis，请将下面的值替换为你到redis-cli路径
 
 #需要修改的地方：redis-cli路径，连接的host，redis配置文件路径
 class RedisStats: #该类实现与redis连接，返回info信息
-    # 如果你是自己编译部署到redis，请将下面的值替换为你到redis-cli路径
-    _redis_cli = '/usr/bin/redis-cli'
     _stat_regex = re.compile(ur'(\w+):([0-9]+\.?[0-9]*)\r')
 
     def __init__(self, port='', passwd=None, host='10.135.17.188'):
-        self._cmd = '%s -h %s -p %s info' % (self._redis_cli, host, port)
+        self._cmd = '%s -h %s -p %s info' % (redis_cli, host, port)
         if passwd not in ['', None]:
             self._cmd = "%s -a %s" % (self._cmd, passwd)
 
@@ -31,12 +30,8 @@ class RedisStats: #该类实现与redis连接，返回info信息
 
 
 class Redislatency: #该类实现返回redis各实例的延迟时间
-    # 如果你是自己编译部署到redis，请将下面的值替换为你到redis-cli路径
-    _redis_cli = '/usr/bin/redis-cli'
-    _stat_regex = re.compile(ur'(\w+):([0-9]+\.?[0-9]*)\r')
-
     def __init__(self, port='', passwd=None, host='10.135.17.188'):
-        self._latency = '%s -h %s -p %s --latency' % (self._redis_cli, host, port)
+        self._latency = '%s -h %s -p %s --latency' % (redis_cli, host, port)
         if passwd not in ['', None]:
             self._latency = "%s -a %s" % (self._latency, passwd)
 
