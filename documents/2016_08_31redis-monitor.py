@@ -127,10 +127,9 @@ def main():
 
 def redis_value(key, vtype, value, port):
     step = 60
-    ip = socket.gethostname()
+    endpoint = socket.gethostname()
     timestamp = int(time.time())
     metric = "redis"
-    endpoint = ip
     tags = 'port=%s' % port
     p = []
     i = {
