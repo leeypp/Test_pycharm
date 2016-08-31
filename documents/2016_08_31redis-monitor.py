@@ -13,8 +13,9 @@ import commands
 import urllib2
 path = './redis_file'
 redis_cli = '/usr/bin/redis-cli'      # 如果你是自己编译部署到redis，请将下面的值替换为你到redis-cli路径
-
 #需要修改的地方：redis-cli路径，连接的host，redis配置文件路径
+
+
 class RedisStats: #该类实现与redis连接，返回info信息
     _stat_regex = re.compile(ur'(\w+):([0-9]+\.?[0-9]*)\r')
 
