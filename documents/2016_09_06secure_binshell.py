@@ -6,6 +6,7 @@ import time
 import socket
 import os
 import urllib2
+import commands
 
 file = (
     '/usr/bin/chfn',
