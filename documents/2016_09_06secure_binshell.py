@@ -7,6 +7,7 @@ import socket
 import os
 import urllib2
 import commands
+import sys
 
 file = (
     '/usr/bin/chfn',
